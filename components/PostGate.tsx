@@ -12,7 +12,8 @@ function isValidXPostUrl(url: string): boolean {
 }
 
 export default function PostGate() {
-  const [locked, setLocked] = useState(false);
+  // Start locked — prevents flash of ungated content before hydration
+  const [locked, setLocked] = useState(true);
   const [step, setStep] = useState<1 | 2>(1);
   const [postUrl, setPostUrl] = useState("");
   const [error, setError] = useState("");
@@ -20,11 +21,12 @@ export default function PostGate() {
   const [exiting, setExiting] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Check lock state on mount
+  // Check lock state on mount — unlock if already posted
   useEffect(() => {
     const unlocked = localStorage.getItem(STORAGE_KEY);
-    if (!unlocked) {
-      setLocked(true);
+    if (unlocked) {
+      setLocked(false);
+    } else {
       document.body.style.overflow = "hidden";
     }
   }, []);
