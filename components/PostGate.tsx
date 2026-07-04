@@ -54,7 +54,21 @@ export default function PostGate() {
       return;
     }
     setError("");
-    localStorage.setItem(STORAGE_KEY, JSON.stringify({ url: postUrl, ts: Date.now() }));
+    // Submit to feed API + unlock
+    fetch("/api/submit-post", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ url: postUrl }),
+    }).catch(() => {}); // fire and forget — don't block unlock
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ url: postUrl, skipped: false, ts: Date.now() }));
+    setExiting(true);
+    setTimeout(() => {
+      setLocked(false);
+    }, 600);
+  };
+
+  const handleSkip = () => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ skipped: true, ts: Date.now() }));
     setExiting(true);
     setTimeout(() => {
       setLocked(false);
@@ -227,6 +241,23 @@ export default function PostGate() {
                 className="w-full text-center text-xs text-[var(--color-muted)] hover:text-[var(--color-gold)] transition-colors mt-4"
               >
                 ← Back to post
+              </button>
+
+              {/* Skip — let them in without submitting */}
+              <div className="flex items-center gap-3 mt-5">
+                <div className="flex-1 h-px bg-[var(--color-border)]" />
+                <span className="text-[10px] text-[var(--color-faded)] font-mono tracking-wider">OR</span>
+                <div className="flex-1 h-px bg-[var(--color-border)]" />
+              </div>
+              <button
+                type="button"
+                onClick={handleSkip}
+                className="w-full mt-4 text-sm text-[var(--color-muted)] hover:text-[var(--color-gold)] transition-colors flex items-center justify-center gap-1.5"
+              >
+                Skip — just let me in
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
               </button>
 
               {/* Progress dots */}

@@ -1,4 +1,5 @@
 import PostGate from "@/components/PostGate";
+import PostFeed from "@/components/PostFeed";
 import ScrollProgress from "@/components/ScrollProgress";
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
@@ -24,6 +25,7 @@ export default function Home() {
         <Manifesto />
         <ComparisonSection />
         <IntentSection />
+        <PostFeed />
         <BountyBoard />
         <HowItWorks />
         <Vision />

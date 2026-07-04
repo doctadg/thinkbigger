@@ -26,6 +26,7 @@ export const INTENT_URL = `https://twitter.com/intent/tweet?text=${encodeURIComp
 export const NAV_LINKS = [
   { label: "Manifesto", href: "#manifesto" },
   { label: "The Intent", href: "#intent" },
+  { label: "Live Feed", href: "#feed" },
   { label: "Bounties", href: "#bounties" },
   { label: "How It Works", href: "#how" },
 ];
