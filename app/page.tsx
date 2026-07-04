@@ -3,6 +3,7 @@ import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import Ticker from "@/components/Ticker";
 import Manifesto from "@/components/Manifesto";
+import ComparisonSection from "@/components/ComparisonSection";
 import IntentSection from "@/components/IntentSection";
 import BountyBoard from "@/components/BountyBoard";
 import HowItWorks from "@/components/HowItWorks";
@@ -19,6 +20,7 @@ export default function Home() {
         <Hero />
         <Ticker />
         <Manifesto />
+        <ComparisonSection />
         <IntentSection />
         <BountyBoard />
         <HowItWorks />

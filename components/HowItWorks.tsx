@@ -1,9 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { IconHold, IconUnite, IconX, IconTarget } from "./Icons";
 import { STEPS } from "@/lib/constants";
 
-const EASE = [0.22, 1, 0.36, 1] as const;
+const EASE = [0.16, 1, 0.3, 1] as const;
+
+const STEP_ICONS = [IconHold, IconUnite, IconX, IconTarget];
 
 export default function HowItWorks() {
   return (
@@ -25,37 +28,46 @@ export default function HowItWorks() {
 
         {/* Steps */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-4">
-          {STEPS.map((step, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.7, delay: i * 0.1, ease: EASE }}
-              className="relative"
-            >
-              {/* Connector line */}
-              {i < STEPS.length - 1 && (
-                <div className="hidden lg:block absolute top-8 left-[60%] right-[-20%] h-[1px] bg-gradient-to-r from-[var(--color-gold-line)] to-transparent" />
-              )}
-
-              {/* Number */}
-              <div className="relative w-16 h-16 rounded-2xl border border-[var(--color-gold-line)] bg-[var(--color-surface)] flex items-center justify-center mb-6 group-hover:border-[var(--color-gold)] transition-colors">
-                <span className="font-display text-2xl font-bold text-[var(--color-gold)]">{step.num}</span>
-                {/* Glowing dot on connector */}
+          {STEPS.map((step, i) => {
+            const Icon = STEP_ICONS[i] || IconTarget;
+            return (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.7, delay: i * 0.1, ease: EASE }}
+                className="relative group"
+              >
+                {/* Connector line */}
                 {i < STEPS.length - 1 && (
-                  <div className="hidden lg:block absolute -right-[3px] top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[var(--color-gold)] animate-pulse-dot" />
+                  <div className="hidden lg:block absolute top-8 left-[60%] right-[-20%] h-[1px] bg-gradient-to-r from-[var(--color-gold-line)] to-transparent">
+                    {/* Moving dot along connector */}
+                    <motion.div
+                      animate={{ x: ["0%", "100%"], opacity: [0, 1, 0] }}
+                      transition={{ duration: 2, repeat: Infinity, delay: i * 0.5 }}
+                      className="absolute top-0 w-1 h-1 rounded-full bg-[var(--color-gold)]"
+                    />
+                  </div>
                 )}
-              </div>
 
-              <h3 className="font-display text-xl font-semibold text-[var(--color-bone)] mb-3">
-                {step.title}
-              </h3>
-              <p className="text-[var(--color-muted)] text-[15px] leading-relaxed">
-                {step.desc}
-              </p>
-            </motion.div>
-          ))}
+                {/* Number circle with icon */}
+                <div className="relative w-16 h-16 rounded-2xl border border-[var(--color-gold-line)] bg-[var(--color-surface)] flex items-center justify-center mb-6 group-hover:border-[var(--color-gold)] transition-all duration-500 group-hover:shadow-[0_0_20px_rgba(251,191,36,0.2)]">
+                  <Icon size={22} className="text-[var(--color-gold)]" strokeWidth={1.5} />
+                  <span className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-[var(--color-gold)] flex items-center justify-center">
+                    <span className="font-display text-[10px] font-bold text-black">{step.num}</span>
+                  </span>
+                </div>
+
+                <h3 className="font-display text-xl font-semibold text-[var(--color-bone)] mb-3">
+                  {step.title}
+                </h3>
+                <p className="text-[var(--color-muted)] text-[15px] leading-relaxed">
+                  {step.desc}
+                </p>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

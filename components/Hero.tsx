@@ -2,11 +2,12 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Copy, Check } from "lucide-react";
-import { XLogo } from "@/components/XLogo";
+import ParticleBackground from "./ParticleBackground";
+import MagneticButton from "./MagneticButton";
+import { IconArrow, IconCopy, IconCheck, IconX, IconSparkle } from "./Icons";
 import { INTENT_TWEET, INTENT_URL, STATS } from "@/lib/constants";
 
-const EASE = [0.22, 1, 0.36, 1] as const;
+const EASE = [0.16, 1, 0.3, 1] as const;
 
 export default function Hero() {
   const [copied, setCopied] = useState(false);
@@ -22,17 +23,37 @@ export default function Hero() {
       id="top"
       className="relative min-h-[100svh] flex flex-col justify-center overflow-hidden pt-20"
     >
-      {/* Radial gold glow */}
-      <div
-        className="absolute inset-0 pointer-events-none"
+      {/* Particle field */}
+      <ParticleBackground density={40} />
+
+      {/* Animated gradient orbs */}
+      <motion.div
+        animate={{
+          scale: [1, 1.1, 1],
+          opacity: [0.06, 0.1, 0.06],
+        }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-[20%] left-[50%] -translate-x-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
         style={{
-          background:
-            "radial-gradient(ellipse 70% 50% at 50% 30%, rgba(251,191,36,0.08) 0%, transparent 60%)",
+          background: "radial-gradient(circle, rgba(251,191,36,0.3) 0%, transparent 70%)",
+          filter: "blur(80px)",
+        }}
+      />
+      <motion.div
+        animate={{
+          scale: [1.1, 1, 1.1],
+          opacity: [0.04, 0.08, 0.04],
+        }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        className="absolute bottom-[10%] right-[20%] w-[400px] h-[400px] rounded-full pointer-events-none"
+        style={{
+          background: "radial-gradient(circle, rgba(245,158,11,0.2) 0%, transparent 70%)",
+          filter: "blur(60px)",
         }}
       />
 
       {/* Grid lines */}
-      <div className="absolute inset-0 bg-grid opacity-30 pointer-events-none" />
+      <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />
 
       {/* Side rails */}
       <div className="absolute left-6 lg:left-12 top-1/2 -translate-y-1/2 -rotate-90 origin-center hidden xl:block">
@@ -53,9 +74,10 @@ export default function Hero() {
         >
           <span className="w-2 h-2 rounded-full bg-[var(--color-gold)] animate-pulse-dot" />
           <span className="label-gold">The anti-PVP movement · $BIGGER</span>
+          <IconSparkle size={14} className="text-[var(--color-gold)] opacity-60" />
         </motion.div>
 
-        {/* Title */}
+        {/* Title — staggered line reveals */}
         <div className="overflow-hidden">
           <motion.h1
             initial={{ y: "110%" }}
@@ -71,9 +93,11 @@ export default function Hero() {
             initial={{ y: "110%" }}
             animate={{ y: 0 }}
             transition={{ duration: 1, delay: 0.3, ease: EASE }}
-            className="font-display text-[16vw] sm:text-[14vw] md:text-[12vw] lg:text-[11rem] xl:text-[13rem] leading-[0.85] tracking-[-0.04em] font-bold text-gradient-gold text-glow-gold"
+            className="font-display text-[16vw] sm:text-[14vw] md:text-[12vw] lg:text-[11rem] xl:text-[13rem] leading-[0.85] tracking-[-0.04em] font-bold"
           >
-            BIGGER
+            <span className="text-gradient-gold" style={{ textShadow: "0 0 40px rgba(251,191,36,0.3)" }}>
+              BIGGER
+            </span>
           </motion.h1>
         </div>
 
@@ -94,23 +118,25 @@ export default function Hero() {
             </p>
 
             <div className="mt-8 flex flex-col sm:flex-row gap-3">
-              <a
-                href={INTENT_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-[var(--color-gold)] text-black text-sm font-semibold rounded-full hover:bg-[var(--color-gold-bright)] transition-all duration-300 hover:-translate-y-0.5"
-              >
-                <XLogo size={16} />
+              <MagneticButton href={INTENT_URL} variant="primary">
+                <IconX size={15} />
                 Post the Intent
-                <ArrowRight size={15} className="group-hover:translate-x-0.5 transition-transform" strokeWidth={2} />
-              </a>
-              <a
-                href="#bounties"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 border border-[var(--color-border-strong)] text-[var(--color-bone)] text-sm font-medium rounded-full hover:border-[var(--color-gold)] hover:text-[var(--color-gold)] transition-all duration-300"
-              >
+                <IconArrow size={14} className="group-hover:translate-x-0.5 transition-transform" strokeWidth={1.5} />
+              </MagneticButton>
+              <MagneticButton href="#bounties" variant="ghost">
                 See the Bounties
-              </a>
+              </MagneticButton>
             </div>
+
+            {/* Floating tag */}
+            <motion.div
+              animate={{ y: [0, -6, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--color-gold-line)] bg-[var(--color-gold-dim)]"
+            >
+              <IconSparkle size={12} className="text-[var(--color-gold)]" />
+              <span className="text-xs text-[var(--color-ash)] font-mono">One click. The whole timeline sees it.</span>
+            </motion.div>
           </motion.div>
 
           {/* Right: Intent Tweet Card */}
@@ -123,80 +149,117 @@ export default function Hero() {
             <div className="relative">
               {/* Card label */}
               <div className="flex items-center justify-between mb-3">
-                <span className="label">Your Intent — Copy and Post</span>
+                <span className="label flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-gold)] animate-pulse-dot" />
+                  Your Intent — Copy and Post
+                </span>
                 <span className="label text-[var(--color-faded)]">Auto-generated</span>
               </div>
 
-              {/* Tweet card */}
-              <div className="relative rounded-2xl border border-[var(--color-border-strong)] bg-[var(--color-surface)] p-6 lg:p-7 shadow-[0_40px_100px_rgba(0,0,0,0.55)] overflow-hidden">
-                {/* Gold top accent */}
-                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[var(--color-gold)] to-transparent" />
+              {/* Tweet card with animated border glow */}
+              <motion.div
+                animate={{
+                  boxShadow: [
+                    "0 40px 100px rgba(0,0,0,0.55), 0 0 0 1px rgba(251,191,36,0.0)",
+                    "0 40px 100px rgba(0,0,0,0.55), 0 0 30px rgba(251,191,36,0.08)",
+                    "0 40px 100px rgba(0,0,0,0.55), 0 0 0 1px rgba(251,191,36,0.0)",
+                  ],
+                }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="relative rounded-2xl border border-[var(--color-border-strong)] bg-[var(--color-surface)] p-6 lg:p-7 overflow-hidden"
+              >
+                {/* Animated top accent line */}
+                <motion.div
+                  animate={{ opacity: [0.4, 1, 0.4] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[var(--color-gold)] to-transparent"
+                />
 
                 {/* Tweet header */}
                 <div className="flex items-center gap-3 mb-5 pb-5 border-b border-[var(--color-border)]">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[var(--color-gold)] to-[var(--color-gold-deep)] flex items-center justify-center">
-                    <span className="font-display font-bold text-black text-sm">TB</span>
-                  </div>
+                  <motion.div
+                    whileHover={{ rotate: 360 }}
+                    transition={{ duration: 0.6 }}
+                    className="w-11 h-11 rounded-full bg-gradient-to-br from-[var(--color-gold)] to-[var(--color-gold-deep)] flex items-center justify-center"
+                  >
+                    <span className="font-display font-bold text-black text-base">B</span>
+                  </motion.div>
                   <div className="flex-1">
                     <div className="flex items-center gap-1.5">
                       <span className="font-display font-semibold text-sm text-[var(--color-bone)]">Think Bigger</span>
-                      <span className="text-[var(--color-faded)] text-xs">✦</span>
+                      <IconSparkle size={10} className="text-[var(--color-gold)]" />
                     </div>
                     <span className="text-xs text-[var(--color-muted)] font-mono">@thinkbigger</span>
                   </div>
-                  <XLogo size={16} className="text-[var(--color-muted)]" />
+                  <IconX size={18} className="text-[var(--color-muted)]" />
                 </div>
 
-                {/* Tweet body */}
+                {/* Tweet body with stagger reveal */}
                 <div className="text-[var(--color-ash)] text-[15px] leading-[1.7] space-y-3 font-body">
-                  <p>
-                    I think its time we all started to think <span className="text-[var(--color-gold)] font-semibold">$BIGGER</span>, let <span className="text-[var(--color-gold)] font-semibold">$ANSEM</span> be an example of what is possible when we actually stop PVPING every narrative.
-                  </p>
-                  <p className="font-display font-semibold text-[var(--color-gold)] text-lg">Think Bigger.</p>
-                  <p>
-                    I think its time we all united as one collective force and brought the exchanges in to buy on top of our heads.
-                  </p>
-                  <p className="font-display font-semibold text-[var(--color-gold)] text-lg">Think Bigger.</p>
-                  <p>
-                    I think its time we collectively realised that the only way we get to where we want to be as an industry is if we stopped fighting against each other and started to work together.
-                  </p>
-                  <p className="font-display font-semibold text-[var(--color-gold)] text-lg">Think Bigger.</p>
+                  {[
+                    { text: "I think its time we all started to think ", bold: "$BIGGER", mid: ", let ", bold2: "$ANSEM", end: " be an example of what is possible when we actually stop PVPING every narrative." },
+                    { chant: true },
+                    { text: "I think its time we all united as one collective force and brought the exchanges in to buy on top of our heads." },
+                    { chant: true },
+                    { text: "I think its time we collectively realised that the only way we get to where we want to be as an industry is if we stopped fighting against each other and started to work together." },
+                    { chant: true },
+                  ].map((line, i) => (
+                    <motion.p
+                      key={i}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.8 + i * 0.15, duration: 0.5 }}
+                      className={line.chant ? "font-display font-bold text-[var(--color-gold)] text-lg" : ""}
+                    >
+                      {line.chant ? (
+                        "Think Bigger."
+                      ) : (
+                        <>
+                          {line.text}
+                          {line.bold && <span className="text-[var(--color-gold)] font-semibold">{line.bold}</span>}
+                          {line.mid}
+                          {line.bold2 && <span className="text-[var(--color-gold)] font-semibold">{line.bold2}</span>}
+                          {line.end}
+                        </>
+                      )}
+                    </motion.p>
+                  ))}
                 </div>
 
                 {/* Tweet actions */}
-                <div className="mt-6 pt-5 border-t border-[var(--color-border)] flex items-center justify-between">
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1.8, duration: 0.5 }}
+                  className="mt-6 pt-5 border-t border-[var(--color-border)] flex items-center justify-between"
+                >
                   <button
                     onClick={copyIntent}
-                    className="inline-flex items-center gap-2 text-sm text-[var(--color-muted)] hover:text-[var(--color-gold)] transition-colors"
+                    className="inline-flex items-center gap-2 text-sm text-[var(--color-muted)] hover:text-[var(--color-gold)] transition-colors group"
                   >
                     {copied ? (
                       <>
-                        <Check size={15} className="text-[var(--color-gold)]" />
+                        <IconCheck size={15} className="text-[var(--color-gold)]" strokeWidth={2.5} />
                         <span className="text-[var(--color-gold)]">Copied</span>
                       </>
                     ) : (
                       <>
-                        <Copy size={15} />
+                        <IconCopy size={15} />
                         Copy text
                       </>
                     )}
                   </button>
-                  <a
-                    href={INTENT_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-gold)] text-black text-sm font-semibold rounded-full hover:bg-[var(--color-gold-bright)] transition-all hover:-translate-y-0.5"
-                  >
-                    <XLogo size={14} />
+                  <MagneticButton href={INTENT_URL} variant="primary" strength={0.2} className="!px-5 !py-2.5 !text-sm">
+                    <IconX size={13} />
                     Post on X
-                  </a>
-                </div>
-              </div>
+                  </MagneticButton>
+                </motion.div>
+              </motion.div>
             </div>
           </motion.div>
         </div>
 
-        {/* Stat strip */}
+        {/* Stat strip with counters */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -204,7 +267,13 @@ export default function Hero() {
           className="mt-16 lg:mt-20 grid grid-cols-2 md:grid-cols-4 gap-px bg-[var(--color-border)] border border-[var(--color-border)] rounded-2xl overflow-hidden"
         >
           {STATS.map((stat, i) => (
-            <div key={i} className="bg-[var(--color-surface)] px-5 py-6">
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1 + i * 0.1, duration: 0.5, ease: EASE }}
+              className="bg-[var(--color-surface)] px-5 py-6 hover:bg-[var(--color-surface-2)] transition-colors duration-300"
+            >
               <div className="label mb-2">{stat.label}</div>
               <div className="flex items-baseline gap-2">
                 <span className="font-display text-2xl md:text-3xl text-[var(--color-bone)] font-semibold">
@@ -212,7 +281,7 @@ export default function Hero() {
                 </span>
                 <span className="text-xs text-[var(--color-muted)] font-mono">{stat.unit}</span>
               </div>
-            </div>
+            </motion.div>
           ))}
         </motion.div>
       </div>
