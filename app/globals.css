@@ -1,12 +1,12 @@
 @import "tailwindcss";
+@source "../components";
+@source "./";
 
 /* ─────────────────────────────────────────────
    DESIGN TOKENS — Dark / Gold
    THINK BIGGER — $BIGGER
    ───────────────────────────────────────────── */
 @theme {
-  color-scheme: dark;
-
   /* Backgrounds — layered blacks */
   --color-void: #050507;
   --color-abyss: #08080a;
@@ -43,6 +43,10 @@
    RESET
    ───────────────────────────────────────────── */
 @layer base {
+  :root {
+    color-scheme: dark;
+  }
+
   * {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -191,3 +195,7 @@
   outline: 1px solid var(--color-gold);
   outline-offset: 2px;
 }
+
+/* Remove number input arrows */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
