@@ -3,35 +3,40 @@
 @source "./";
 
 /* ─────────────────────────────────────────────
-   DESIGN TOKENS — Dark / Gold
+   DESIGN TOKENS — Dark / Ember
    THINK BIGGER — $BIGGER
+   Palette sampled from hero artwork
    ───────────────────────────────────────────── */
 @theme {
-  /* Backgrounds — layered blacks */
-  --color-void: #050507;
-  --color-abyss: #08080a;
-  --color-surface: #0e0e12;
-  --color-surface-2: #131318;
-  --color-surface-3: #1a1a20;
+  /* Backgrounds — deep navy-black from hero */
+  --color-void: #0A0E14;
+  --color-abyss: #08090C;
+  --color-surface: #10141C;
+  --color-surface-2: #161B24;
+  --color-surface-3: #1E2530;
 
   /* Borders */
-  --color-border: rgba(255, 255, 255, 0.07);
-  --color-border-strong: rgba(255, 255, 255, 0.14);
-  --color-border-hover: rgba(255, 255, 255, 0.22);
+  --color-border: rgba(255, 255, 255, 0.06);
+  --color-border-strong: rgba(255, 255, 255, 0.12);
+  --color-border-hover: rgba(255, 255, 255, 0.20);
 
   /* Text */
-  --color-bone: #f5f5f7;
-  --color-ash: #d8d8de;
-  --color-muted: #82828c;
-  --color-faded: #52525a;
+  --color-bone: #F2EEE8;
+  --color-ash: #C8C4BE;
+  --color-muted: #7A7680;
+  --color-faded: #4A4650;
 
-  /* Accent — GOLD (the signal color) */
-  --color-gold: #fbbf24;
-  --color-gold-bright: #fcd34d;
-  --color-gold-deep: #f59e0b;
-  --color-gold-glow: rgba(251, 191, 36, 0.25);
-  --color-gold-line: rgba(251, 191, 36, 0.35);
-  --color-gold-dim: rgba(251, 191, 36, 0.08);
+  /* Accent — EMBER (signal color, sampled from hero) */
+  --color-gold: #FA923D;
+  --color-gold-bright: #FFB45A;
+  --color-gold-deep: #D96B36;
+  --color-gold-glow: rgba(250, 146, 61, 0.25);
+  --color-gold-line: rgba(250, 146, 61, 0.35);
+  --color-gold-dim: rgba(250, 146, 61, 0.08);
+
+  /* Secondary accent — CORAL */
+  --color-coral: #D36D51;
+  --color-coral-glow: rgba(211, 109, 81, 0.2);
 
   /* Fonts */
   --font-display: "Space Grotesk", sans-serif;
@@ -149,7 +154,7 @@
 
   /* Gold glow */
   .glow-gold {
-    box-shadow: 0 0 40px var(--color-gold-glow), 0 0 80px rgba(251, 191, 36, 0.1);
+    box-shadow: 0 0 40px var(--color-gold-glow), 0 0 80px rgba(250, 146, 61, 0.1);
   }
 
   .text-glow-gold {

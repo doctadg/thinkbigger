@@ -12,7 +12,7 @@ export default function Footer() {
       {/* Background glow */}
       <div
         className="absolute inset-0 pointer-events-none opacity-50"
-        style={{ background: "radial-gradient(ellipse 40% 60% at 50% 0%, rgba(251,191,36,0.05) 0%, transparent 70%)" }}
+        style={{ background: "radial-gradient(ellipse 40% 60% at 50% 0%, rgba(250, 146, 61,0.05) 0%, transparent 70%)" }}
       />
 
       <div className="relative max-w-[1400px] mx-auto px-6 lg:px-12">
@@ -33,7 +33,7 @@ export default function Footer() {
           </motion.div>
 
           <h3 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-none">
-            THINK <span className="text-gradient-gold" style={{ textShadow: "0 0 40px rgba(251,191,36,0.3)" }}>BIGGER</span>
+            THINK <span className="text-gradient-gold" style={{ textShadow: "0 0 40px rgba(250, 146, 61,0.3)" }}>BIGGER</span>
           </h3>
           <p className="mt-4 text-[var(--color-muted)] text-sm font-mono uppercase tracking-widest">
             Or get left behind.
@@ -46,7 +46,7 @@ export default function Footer() {
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
             className="group mt-8 inline-flex items-center gap-2 px-8 py-4 bg-[var(--color-gold)] text-black text-base font-semibold rounded-full hover:bg-[var(--color-gold-bright)] transition-colors duration-300"
-            style={{ boxShadow: "0 10px 40px rgba(251,191,36,0.2)" }}
+            style={{ boxShadow: "0 10px 40px rgba(250, 146, 61,0.2)" }}
           >
             <IconX size={18} />
             Post the Intent

@@ -23,31 +23,45 @@ export default function Hero() {
       id="top"
       className="relative min-h-[100svh] flex flex-col justify-center overflow-hidden pt-20"
     >
+      {/* Hero background image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center pointer-events-none"
+        style={{ backgroundImage: "url(/hero-bg.jpg)" }}
+      />
+      {/* Dark gradient overlay for text legibility */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(10,14,20,0.6) 0%, rgba(10,14,20,0.3) 40%, rgba(10,14,20,0.7) 75%, rgba(10,14,20,0.95) 100%)",
+        }}
+      />
+
       {/* Particle field */}
       <ParticleBackground density={40} />
 
-      {/* Animated gradient orbs */}
+      {/* Animated gradient orbs — ember tones matching hero bg */}
       <motion.div
         animate={{
           scale: [1, 1.1, 1],
-          opacity: [0.06, 0.1, 0.06],
+          opacity: [0.08, 0.14, 0.08],
         }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         className="absolute top-[20%] left-[50%] -translate-x-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
         style={{
-          background: "radial-gradient(circle, rgba(251,191,36,0.3) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(250,146,61,0.35) 0%, transparent 70%)",
           filter: "blur(80px)",
         }}
       />
       <motion.div
         animate={{
           scale: [1.1, 1, 1.1],
-          opacity: [0.04, 0.08, 0.04],
+          opacity: [0.05, 0.1, 0.05],
         }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
         className="absolute bottom-[10%] right-[20%] w-[400px] h-[400px] rounded-full pointer-events-none"
         style={{
-          background: "radial-gradient(circle, rgba(245,158,11,0.2) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(211,109,81,0.3) 0%, transparent 70%)",
           filter: "blur(60px)",
         }}
       />
@@ -95,7 +109,7 @@ export default function Hero() {
             transition={{ duration: 1, delay: 0.3, ease: EASE }}
             className="font-display text-[16vw] sm:text-[14vw] md:text-[12vw] lg:text-[11rem] xl:text-[13rem] leading-[0.85] tracking-[-0.04em] font-bold"
           >
-            <span className="text-gradient-gold" style={{ textShadow: "0 0 40px rgba(251,191,36,0.3)" }}>
+            <span className="text-gradient-gold" style={{ textShadow: "0 0 40px rgba(250, 146, 61,0.3)" }}>
               BIGGER
             </span>
           </motion.h1>
@@ -160,9 +174,9 @@ export default function Hero() {
               <motion.div
                 animate={{
                   boxShadow: [
-                    "0 40px 100px rgba(0,0,0,0.55), 0 0 0 1px rgba(251,191,36,0.0)",
-                    "0 40px 100px rgba(0,0,0,0.55), 0 0 30px rgba(251,191,36,0.08)",
-                    "0 40px 100px rgba(0,0,0,0.55), 0 0 0 1px rgba(251,191,36,0.0)",
+                    "0 40px 100px rgba(0,0,0,0.55), 0 0 0 1px rgba(250, 146, 61,0.0)",
+                    "0 40px 100px rgba(0,0,0,0.55), 0 0 30px rgba(250, 146, 61,0.08)",
+                    "0 40px 100px rgba(0,0,0,0.55), 0 0 0 1px rgba(250, 146, 61,0.0)",
                   ],
                 }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}

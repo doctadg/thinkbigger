@@ -34,7 +34,7 @@ export default function Vision() {
         animate={{ opacity: [0.4, 0.8, 0.4], scale: [1, 1.05, 1] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         className="absolute inset-0 pointer-events-none"
-        style={{ background: "radial-gradient(ellipse 50% 60% at 50% 100%, rgba(251,191,36,0.06) 0%, transparent 70%)" }}
+        style={{ background: "radial-gradient(ellipse 50% 60% at 50% 100%, rgba(250, 146, 61,0.06) 0%, transparent 70%)" }}
       />
 
       <div className="relative max-w-[1400px] mx-auto px-6 lg:px-12">
@@ -78,7 +78,7 @@ export default function Vision() {
               >
                 {/* Hover glow */}
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                  style={{ background: "radial-gradient(ellipse at top, rgba(251,191,36,0.06) 0%, transparent 60%)" }}
+                  style={{ background: "radial-gradient(ellipse at top, rgba(250, 146, 61,0.06) 0%, transparent 60%)" }}
                 />
 
                 <div className="relative">
@@ -114,7 +114,7 @@ export default function Vision() {
             The moon was never the goal.
           </p>
           <motion.p
-            animate={{ textShadow: ["0 0 0px rgba(251,191,36,0)", "0 0 30px rgba(251,191,36,0.3)", "0 0 0px rgba(251,191,36,0)"] }}
+            animate={{ textShadow: ["0 0 0px rgba(250, 146, 61,0)", "0 0 30px rgba(250, 146, 61,0.3)", "0 0 0px rgba(250, 146, 61,0)"] }}
             transition={{ duration: 4, repeat: Infinity }}
             className="font-display text-2xl md:text-3xl font-bold text-gradient-gold mt-2"
           >

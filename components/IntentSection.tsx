@@ -15,7 +15,7 @@ export default function IntentSection() {
         animate={{ opacity: [0.3, 0.6, 0.3] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
         className="absolute inset-0 pointer-events-none"
-        style={{ background: "radial-gradient(ellipse 60% 40% at 50% 50%, rgba(251,191,36,0.05) 0%, transparent 70%)" }}
+        style={{ background: "radial-gradient(ellipse 60% 40% at 50% 50%, rgba(250, 146, 61,0.05) 0%, transparent 70%)" }}
       />
 
       <div className="relative max-w-[1400px] mx-auto px-6 lg:px-12">
@@ -122,7 +122,7 @@ export default function IntentSection() {
                     {line.chant ? (
                       <>
                         <IconSparkle size={16} className="text-[var(--color-gold)] shrink-0" />
-                        <p className="font-display text-2xl lg:text-3xl font-bold text-[var(--color-gold)]" style={{ textShadow: "0 0 20px rgba(251,191,36,0.2)" }}>
+                        <p className="font-display text-2xl lg:text-3xl font-bold text-[var(--color-gold)]" style={{ textShadow: "0 0 20px rgba(250, 146, 61,0.2)" }}>
                           Think Bigger.
                         </p>
                       </>

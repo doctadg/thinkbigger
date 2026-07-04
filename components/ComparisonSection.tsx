@@ -72,7 +72,7 @@ function UnifiedChart() {
       {/* Gold area fill */}
       <motion.path
         d="M0 100 L20 95 L40 88 L60 82 L80 74 L100 65 L120 58 L140 48 L160 42 L180 35 L200 28 L220 22 L240 16 L260 12 L280 8 L300 5 L300 120 L0 120 Z"
-        fill="rgba(251,191,36,0.08)"
+        fill="rgba(250, 146, 61,0.08)"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
@@ -82,7 +82,7 @@ function UnifiedChart() {
       {/* Steady pump chart */}
       <motion.path
         d="M0 100 L20 95 L40 88 L60 82 L80 74 L100 65 L120 58 L140 48 L160 42 L180 35 L200 28 L220 22 L240 16 L260 12 L280 8 L300 5"
-        stroke="#fbbf24"
+        stroke="#FA923D"
         strokeWidth="2.5"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -95,7 +95,7 @@ function UnifiedChart() {
       {/* Moving dot along the path */}
       <motion.circle
         r="3"
-        fill="#fbbf24"
+        fill="#FA923D"
         initial={{ offsetDistance: "0%" }}
         whileInView={{ offsetDistance: "100%" }}
         viewport={{ once: true }}
@@ -110,7 +110,7 @@ function UnifiedChart() {
         cx="300"
         cy="5"
         r="6"
-        fill="rgba(251,191,36,0.15)"
+        fill="rgba(250, 146, 61,0.15)"
         initial={{ opacity: 0, scale: 0 }}
         whileInView={{ opacity: [0, 1, 0.5, 1], scale: [0, 1.5, 1, 1.5] }}
         viewport={{ once: true }}
@@ -120,7 +120,7 @@ function UnifiedChart() {
         cx="300"
         cy="5"
         r="3"
-        fill="#fbbf24"
+        fill="#FA923D"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
@@ -134,7 +134,7 @@ function UnifiedChart() {
         viewport={{ once: true }}
         transition={{ delay: 1 }}
       >
-        <text x="250" y="22" fill="#fbbf24" fontSize="9" fontFamily="monospace" fontWeight="bold">ONLY UP</text>
+        <text x="250" y="22" fill="#FA923D" fontSize="9" fontFamily="monospace" fontWeight="bold">ONLY UP</text>
       </motion.g>
     </svg>
   );
@@ -225,7 +225,7 @@ export default function ComparisonSection() {
             {/* Gold glow */}
             <div
               className="absolute inset-0 pointer-events-none"
-              style={{ background: "radial-gradient(ellipse at top, rgba(251,191,36,0.08) 0%, transparent 60%)" }}
+              style={{ background: "radial-gradient(ellipse at top, rgba(250, 146, 61,0.08) 0%, transparent 60%)" }}
             />
 
             {/* Animated gold border accent */}

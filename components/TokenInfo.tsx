@@ -119,7 +119,7 @@ export default function TokenInfo() {
                   <circle
                     cx="100" cy="100" r="95"
                     fill="none"
-                    stroke="rgba(251,191,36,0.15)"
+                    stroke="rgba(250, 146, 61,0.15)"
                     strokeWidth="1"
                     strokeDasharray="4 8"
                   />
@@ -136,7 +136,7 @@ export default function TokenInfo() {
                   <circle
                     cx="120" cy="120" r="115"
                     fill="none"
-                    stroke="rgba(251,191,36,0.08)"
+                    stroke="rgba(250, 146, 61,0.08)"
                     strokeWidth="1"
                     strokeDasharray="2 12"
                   />
@@ -148,7 +148,7 @@ export default function TokenInfo() {
                 animate={{ y: [0, -8, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                 className="relative w-48 h-48 lg:w-64 lg:h-64 rounded-full border-2 border-[var(--color-gold)] flex items-center justify-center bg-gradient-to-br from-[var(--color-surface)] via-[var(--color-surface-2)] to-[var(--color-void)]"
-                style={{ boxShadow: "0 0 60px rgba(251,191,36,0.15), inset 0 0 30px rgba(251,191,36,0.05)" }}
+                style={{ boxShadow: "0 0 60px rgba(250, 146, 61,0.15), inset 0 0 30px rgba(250, 146, 61,0.05)" }}
               >
                 <div className="text-center">
                   <IconDiamond size={28} className="text-[var(--color-gold)] mx-auto mb-2 opacity-80" strokeWidth={1} />

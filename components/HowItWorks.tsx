@@ -52,7 +52,7 @@ export default function HowItWorks() {
                 )}
 
                 {/* Number circle with icon */}
-                <div className="relative w-16 h-16 rounded-2xl border border-[var(--color-gold-line)] bg-[var(--color-surface)] flex items-center justify-center mb-6 group-hover:border-[var(--color-gold)] transition-all duration-500 group-hover:shadow-[0_0_20px_rgba(251,191,36,0.2)]">
+                <div className="relative w-16 h-16 rounded-2xl border border-[var(--color-gold-line)] bg-[var(--color-surface)] flex items-center justify-center mb-6 group-hover:border-[var(--color-gold)] transition-all duration-500 group-hover:shadow-[0_0_20px_rgba(250, 146, 61,0.2)]">
                   <Icon size={22} className="text-[var(--color-gold)]" strokeWidth={1.5} />
                   <span className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-[var(--color-gold)] flex items-center justify-center">
                     <span className="font-display text-[10px] font-bold text-black">{step.num}</span>

@@ -70,7 +70,7 @@ export default function BountyBoard() {
                     transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                     className="absolute inset-0 pointer-events-none opacity-30"
                     style={{
-                      background: "linear-gradient(90deg, transparent 0%, rgba(251,191,36,0.15) 50%, transparent 100%)",
+                      background: "linear-gradient(90deg, transparent 0%, rgba(250, 146, 61,0.15) 50%, transparent 100%)",
                     }}
                   />
                 )}
@@ -82,7 +82,7 @@ export default function BountyBoard() {
                       whileHover={isActive ? { scale: 1.1, rotate: 5 } : {}}
                       className={`w-11 h-11 lg:w-12 lg:h-12 rounded-xl flex items-center justify-center shrink-0 transition-all duration-500 ${
                         isActive
-                          ? "bg-[var(--color-gold)] text-black shadow-[0_0_20px_rgba(251,191,36,0.3)]"
+                          ? "bg-[var(--color-gold)] text-black shadow-[0_0_20px_rgba(250, 146, 61,0.3)]"
                           : "bg-[var(--color-surface-3)] text-[var(--color-muted)]"
                       }`}
                     >

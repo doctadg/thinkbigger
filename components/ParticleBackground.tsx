@@ -96,13 +96,13 @@ export default function ParticleBackground({ density = 30 }: { density?: number 
         // Draw
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(251, 191, 36, ${p.opacity})`;
+        ctx.fillStyle = `rgba(250, 146, 61, ${p.opacity})`;
         ctx.fill();
 
         // Glow
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size * 3, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(251, 191, 36, ${p.opacity * 0.08})`;
+        ctx.fillStyle = `rgba(250, 146, 61, ${p.opacity * 0.08})`;
         ctx.fill();
 
         // Respawn
